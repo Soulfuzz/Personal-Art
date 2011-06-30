@@ -2,14 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-	<title>PWrsonal Art Project</title>
+	<title>Personal Art Project</title>
 	<meta name="author" content="Lars Giere" />
 	<link rel="stylesheet" href="css/main.css" type="text/css" />
-	<script type="text/javascript" src="lib/Prototype/prototype.js"></script>
-	<script type="text/javascript" src="script/image_changer.js"></script>
-	<script type="text/javascript" src="script/content_load.js"></script>
 	<script type="text/javascript">
-
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-24188784-1']);
 	  _gaq.push(['_setDomainName', '.lars-giere.de']);
@@ -23,12 +19,35 @@
 	
 	</script>
 	<script type="text/javascript">
+		var status=1;
+		
+		function Load_Original () {
+			if (status == 1 && page == "images") {
+				document.getElementById("imagecol").innerHTML="loading...";
+				new Ajax.Updater('imagecol', 'src/original_image.php', { method: 'get' });
+				status=2;
+			}
+			else if (status > 1 && page == "images"){
+				status = 1;
+			}
+		}
+
+		function Load_Personal () {
+			if (status == 2 && page == "images") {
+				document.getElementById("imagecol").innerHTML="loading...";
+				new Ajax.Updater('imagecol', 'src/personalized_image.php', { method: 'get' });
+			}
+		}
+		
 		function Image_Create() {
 			new Ajax.Request('imagecol','src/test.php', {
 				  parameters: $('imform').serialize(true)
 				  });
 		}
 	</script>
+	<script type="text/javascript" src="lib/Prototype/prototype.js"></script>
+	<script type="text/javascript" src="script/image_changer.js"></script>
+	<script type="text/javascript" src="script/content_load.js"></script>
 </head>
 <body>
 	<div id="content">

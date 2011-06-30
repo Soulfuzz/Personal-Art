@@ -1,10 +1,41 @@
 <form method="POST" action="src/image_create.php" enctype="multipart/form-data" id="imform">
-	    <input type="text" name="image_text" />
-		<input type="file" name="upload_image" />
-		<select name="type" size="1">
-				      <option value="2">Bild per Text</option>
-				      <option value="1">Bild per Zufall</option>
-		</select>
-		<input type="submit" value="Bild erzeugen">
+	<table width="100%">
+		<tr>
+			<td>
+				Text:
+			</td>
+			<td>
+				<input type="text" name="image_text" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Bild:
+			</td>
+			<td>
+				<input type="file" name="upload_image" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+			Art des Bildes:
+			</td>
+			<td>
+			<select name="type" size="1">
+				      <option value="2">Lars per Text</option>
+				      <option value="1">Lars per Zufall</option>
+				      <option value="3">Robert per Zufall RGB</option>
+				      <option value="4">Robert per Zufall HSV</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+			<br>
+			<input type="submit" value="Bild erzeugen">
+			</td>
+		</tr>
+	</table>
 </form>
 
