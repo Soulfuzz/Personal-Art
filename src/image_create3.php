@@ -24,7 +24,7 @@ function OneDToThreeD($a,$k){
 }
 function typewrite($x,$y,$l,$h,$red,$green,$blue){
         $fillcolor = "rgb(".$red.",".$green.",".$blue.")";
-        print "\t<rect x=\"$x\" y=\"$y\" width=\"$l\" height=\"$h\" style=\"fill:$fillcolor;\"/>\n";
+        return "\t<rect x=\"$x\" y=\"$y\" width=\"$l\" height=\"$h\" style=\"fill:$fillcolor;\"/>\n";
 }
 
 $n=8; // boxwidth
