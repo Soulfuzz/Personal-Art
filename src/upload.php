@@ -1,5 +1,13 @@
-<form method="POST" action="src/image_create.php" enctype="multipart/form-data" id="imform">
+<form method="POST" action="index.php" enctype="multipart/form-data" id="imform">
 	<table width="100%">
+		<tr>
+			<td> 
+				Dein Name:
+			</td>
+			<td>
+				<input type="text" name="author_name" />
+			</td>
+		</tr>
 		<tr>
 			<td>
 				Text:
@@ -29,7 +37,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td></td>
+			<td> </td>
 			<td>
 			<br>
 			<input type="hidden" name="upload" value="true";

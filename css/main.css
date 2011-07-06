@@ -5,7 +5,7 @@
 	www.solucija.com
 
 */
-
+ 
 *{margin:0;padding:0;outline:0}
 body { font: 11px/18px Georgia, Palatino, "Times New Roman", Times, Serif; background: #f4f4f4 url(../images/bg2.jpg) no-repeat center top; color: #777; }
 
@@ -47,3 +47,7 @@ img { border: 0; }
 #right { float: right; }
 #footer p { margin: 0 0 12px; }
 #footer a { color: #555; margin: 0 0 0 5px; }
+
+#changer { position: fixed; top: 190px; left: 0px; width: 150px; height: 20px; background-color: white; }
+
+.verticaltext { text-align: center; -moz-transform: rotate(90deg); writing-mode: tb-rl; }

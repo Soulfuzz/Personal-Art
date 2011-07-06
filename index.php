@@ -1,3 +1,16 @@
+<?php 
+$svg_file="test.svg";
+$upload_file="test.jpg";
+
+
+if (isset($_POST["upload"])){
+	$author_name=$_POST["author_name"];
+	$image_text=$_POST["image_text"];
+	include "src/image_create_by_lib.php";
+}
+?>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,27 +29,22 @@
 	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 	  })();
-	
+
+
+				
 	</script>
 	<script type="text/javascript">
-		var status=1;
+
 		
-		function Load_Original () {
-			if (status == 1 && page == "images") {
+		function Load_Original (imageurl) {
 				document.getElementById("imagecol").innerHTML="loading...";
-				new Ajax.Updater('imagecol', 'src/original_image.php', { method: 'get' });
+				new Ajax.Updater('imagecol', 'src/original_image.php', { method: 'get', parameters: {image: imageurl} });
 				status=2;
-			}
-			else if (status > 1 && page == "images"){
-				status = 1;
-			}
 		}
 
-		function Load_Personal () {
-			if (status == 2 && page == "images") {
+		function Load_Personal (imageurl) {
 				document.getElementById("imagecol").innerHTML="loading...";
-				new Ajax.Updater('imagecol', 'src/personalized_image.php', { method: 'get' });
-			}
+				new Ajax.Updater('imagecol', 'src/personalized_image.php', { method: 'get', parameters: {image: imageurl} });
 		}
 		
 		function Image_Create() {
@@ -50,6 +58,7 @@
 	<script type="text/javascript" src="script/content_load.js"></script>
 </head>
 <body>
+	<div id="changer" class="verticaltext"><a href="#" onclick="Load_Personal('<?php echo $svg_file ?>')">Personalisiert</a> - <a href="#"  onclick="Load_Original('<?php echo $upload_file ?>')">Original</a></div>
 	<div id="content">
 		<div id="header">
 			<p id="top">Personal Art is rather a concept of the visualization of a context than real art</p>
@@ -68,8 +77,10 @@
 		</div>
 	
 		<div id="cols">
-			<div class="col" id="imagecol" onmouseover="Load_Original();status=2;" onmouseout="Load_Personal();status=1;">
-				<?php include "src/personalized_image.php"; ?>
+			<div class="col" id="imagecol">
+				<?php 
+					include "src/personalized_image.php"; 
+				?>
 			</div>
 			<div class="col last" id="textcol">
 				<?php include "src/image_text.php"; ?>

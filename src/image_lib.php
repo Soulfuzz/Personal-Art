@@ -1,6 +1,6 @@
 <?php
 //namespace de\LarsGiere\PersonalArt;
-
+ 
 interface ImageLib{
 	public function __construct($image);
 	public function resize($x,$y);
@@ -284,13 +284,15 @@ class ImageCreator{
 	}
 	
 	function drawPictureByText(ImageLib &$image, $text){
+		if ($text == ""){
+			$text="Personal Art";
+		}
+		
 		$t=new TextToAscii($text);
 		$ascii_text=$t->Encode();
 		$height=$this->line_height;
     	$x=0; $y=0;
     	$output="<svg width=\"".$this->svgwidth."px\" height=\"".$this->svgheight."px\" xmlns=\"http://www.w3.org/2000/svg\">\n";
-    	//$mod=7680/sumArray($ascii_text);
-    	//$ascii_text=multArray($ascii_text,$mod);
     	$width_calc=$image->getHeight()/$this->svgheight;
 		$height_calc=$image->getWidth()/$this->svgwidth;
 		$text_count=0;
@@ -386,7 +388,7 @@ class ImageCreator{
 	
 	public function saveAsSVG($filename) {
 		$text="<?xml version=\"1.0\" encoding=\"iso-8859-1\" standalone=\"no\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\" \"http://www.w3.org/TR/SVG/DTD/svg10.dtd\">";
-		$text=$this->svg;
+		$text.=$this->svg;
 		$fh = fopen($filename, 'w') or die("can't open file");
 		fwrite($fh, $text);
 		fclose($fh);	
