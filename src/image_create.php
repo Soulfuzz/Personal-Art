@@ -3,7 +3,7 @@
 $type=$_POST["type"];
 
 if ($type == 1) {
-	include "../test.php";
+	include "image_create_by_lib.php";
 }
 
 else if ($type == 2){

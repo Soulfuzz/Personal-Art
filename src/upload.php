@@ -22,8 +22,7 @@
 			</td>
 			<td>
 			<select name="type" size="1">
-				      <option value="2">Lars per Text</option>
-				      <option value="1">Lars per Zufall</option>
+				      <option value="1">Lars per Text Originalfarben</option>
 				      <option value="3">Robert per Zufall RGB</option>
 				      <option value="4">Robert per Zufall HSV</option>
 			</select>
@@ -33,6 +32,7 @@
 			<td></td>
 			<td>
 			<br>
+			<input type="hidden" name="upload" value="true";
 			<input type="submit" value="Bild erzeugen">
 			</td>
 		</tr>
