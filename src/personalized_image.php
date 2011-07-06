@@ -2,8 +2,11 @@
 if (isset($_GET["image"])){
 	echo $_GET["image"];
 }
-else { 
+else if (isset($svg_file)) { 
 	echo $svg_file; 
+}
+else {
+	echo "test.svg";
 }
 ?>" width="640" height="900"
 				type="image/svg+xml"
